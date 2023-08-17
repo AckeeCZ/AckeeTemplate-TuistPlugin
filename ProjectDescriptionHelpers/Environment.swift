@@ -32,7 +32,8 @@ public extension Environment {
     init?(rawValue: String) {
         if let value = Self.allCases.first(where: { $0.rawValue.lowercased() == rawValue.lowercased() }) {
             self = value
+        } else {
+            return nil
         }
-        return nil
     }
 }
