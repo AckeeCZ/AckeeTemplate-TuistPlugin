@@ -33,4 +33,10 @@ public extension Shell {
     static func capture(_ command: String...) -> String? {
         capture(Array(command))
     }
+    
+    /// Get number of commits in git repo
+    /// - Returns: Number of commits or nil if error occured
+    static func numberOfCommits() -> Int? {
+        capture("git", "rev-list", "HEAD", "--count").flatMap(Int.init)
+    }
 }
