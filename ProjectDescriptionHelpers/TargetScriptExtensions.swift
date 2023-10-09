@@ -2,9 +2,13 @@ import ProjectDescription
 
 public extension TargetScript {
     /// Action that tries to run Swiftlint using mint, or directly if mint is not installed
-    ///
+    /// 
     /// If Swiftlint cannot be found, then it does nothing
-    static func swiftlint() -> TargetScript {
+    /// - Parameter inputPaths: List of files to be linted, useful when user script sandbox is enabled
+    /// - Returns: Target script to be run
+    static func swiftlint(
+        inputPaths: [FileListGlob] = []
+    ) -> TargetScript {
         .post(
             script: """
             export PATH=/opt/homebrew/bin:${PATH}
@@ -37,6 +41,7 @@ public extension TargetScript {
             echo "SwiftLint not found, not running it"
             """,
             name: "SwiftLint",
+            inputPaths: inputPaths,
             basedOnDependencyAnalysis: false
         )
     }
@@ -44,6 +49,8 @@ public extension TargetScript {
 
 public extension [TargetScript] {
     /// Downloads latest upload dSYM script from Firebase repository and uses it to upload dSYMs
+    /// - Parameter outputDir: Destination where fetched scripts from Crashlytics will be saved
+    /// - Returns: Target scripts to be run
     static func crashlytics(
         outputDir: String = "$SRCROOT/Derived"
     ) -> [TargetScript] {
