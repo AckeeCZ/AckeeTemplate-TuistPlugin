@@ -41,7 +41,7 @@ public extension TargetScript {
             echo "SwiftLint not found, not running it"
             """,
             name: "SwiftLint",
-            inputPaths: inputPaths,
+            inputPaths: inputPaths.map(\.glob),
             basedOnDependencyAnalysis: false
         )
     }
