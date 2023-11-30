@@ -8,11 +8,11 @@ public extension Configuration {
     static var current: Self {
         let rawValue = ProjectDescription.Environment.configuration.getString(default: "debug").lowercased()
         let settings: SettingsDictionary = [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": .string(rawValue.uppercased()),
+            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": ["\(rawValue.uppercased())", "$(inherited)"],
         ]
         
         switch rawValue {
-        case "debug": return .debug(name: "Debug", settings: settings)
+        case "debug": return .debug(name: "Debug")
         case "beta": return .release(name: "Beta", settings: settings)
         case "release": return .release(name: "Release", settings: settings)
         default: return .debug(name: "Debug", settings: settings)
