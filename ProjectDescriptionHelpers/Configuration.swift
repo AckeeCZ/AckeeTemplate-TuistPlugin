@@ -29,6 +29,6 @@ public extension Configuration {
     var isRelease: Bool { name.rawValue.lowercased() == "release" }
 }
 
-extension Configuration: CustomStringConvertible {
+extension Configuration: @retroactive CustomStringConvertible {
     public var description: String { name.rawValue }
 }

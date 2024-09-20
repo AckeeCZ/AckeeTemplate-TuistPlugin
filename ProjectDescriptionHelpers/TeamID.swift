@@ -2,7 +2,7 @@ import Foundation
 
 /// Represents team ID in Apple Dev portal & App Store Connect,
 /// basically just provides namespace for your own extensions.
-public struct TeamID: RawRepresentable, CustomStringConvertible, ExpressibleByStringInterpolation {
+public struct TeamID: RawRepresentable, CustomStringConvertible, ExpressibleByStringInterpolation, Sendable {
     /// Team ID for Ackee production apps
     public static let ackeeProduction: Self = "3SMVP6VZP8"
     

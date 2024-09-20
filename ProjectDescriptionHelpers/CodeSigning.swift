@@ -1,9 +1,9 @@
 import ProjectDescription
 
 /// Representing app code signing
-public enum CodeSigning {
+public enum CodeSigning: Sendable {
     /// Code signing identity values
-    public struct Identity: ExpressibleByStringInterpolation, RawRepresentable {
+    public struct Identity: ExpressibleByStringInterpolation, RawRepresentable, Sendable {
         public var rawValue: String
         
         /// Apple development constant

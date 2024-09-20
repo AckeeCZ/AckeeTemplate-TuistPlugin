@@ -5,7 +5,7 @@ import enum ProjectDescription.Environment
 ///
 /// Represents standard environments in our app,
 /// if you need custom environments, you should use your own object.
-public enum Environment: String, CaseIterable {
+public enum Environment: String, CaseIterable, Sendable {
     public static var current: Self {
         .init(
             rawValue: ProjectDescription.Environment.environment
