@@ -8,10 +8,7 @@ public extension Configuration {
     static var current: Self {
         let rawValue = ProjectDescription.Environment.configuration.getString(default: "debug").lowercased()
         let settings: SettingsDictionary = [
-            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": [
-                .string("$(inherited)"),
-                .string(rawValue.uppercased()),
-            ],
+            "SWIFT_ACTIVE_COMPILATION_CONDITIONS": .string("$(inherited) \(rawValue.uppercased())"),
         ]
         
         switch rawValue {
