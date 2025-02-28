@@ -9,7 +9,7 @@ public extension Configuration {
         let rawValue = ProjectDescription.Environment.configuration.getString(default: "debug").lowercased()
         let settings: SettingsDictionary = [
             "SWIFT_ACTIVE_COMPILATION_CONDITIONS": [
-                "$(inherited)",
+                .string("$(inherited)"),
                 .string(rawValue.uppercased()),
             ],
         ]
